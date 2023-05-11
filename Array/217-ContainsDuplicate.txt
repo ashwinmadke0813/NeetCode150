@@ -1,0 +1,46 @@
+// https://leetcode.com/problems/contains-duplicate/
+
+Approach -1 : Bruteforce // mostly will give you TLE
+
+1.run to loops The first loop will pick integers one by one from the array and the second nested loop will check if there exists any duplicate or not.
+2.if both elements are same return true 
+3.else false
+class Solution {
+    public boolean containsDuplicate(int[] nums) {
+        
+        for(int i=0; i < nums.length; i++)
+        {
+            for(int j=i+1; j < nums.length; j++)
+            {
+                if(nums[i] == nums[j])
+                {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+}
+//tc- O(n*n) or O(n^2)
+//sc- O(1)
+
+Approach -2 : 
+1.Apply sorting on array
+2.If we sort the array, then all the integers will arrange in order in addition of that duplicates will also be arranged in order
+3.now only we need to compare adjacent elements
+
+class Solution {
+    public boolean containsDuplicate(int[] nums) {
+        
+        Arrays.sort(nums);
+        for(int i=1; i < nums.length; i++)
+        {
+            if(nums[i] == nums[i-1])
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+}
+//tc - O(nlogn) , sorting will take nlogn time

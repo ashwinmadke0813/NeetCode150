@@ -1,0 +1,46 @@
+//https://leetcode.com/problems/two-sum/
+
+Approach- 1: Brute Force (using two loops)
+class Solution {
+    public int[] twoSum(int[] nums, int target) {
+        // run to loops for traversing over the array & for comapring the elements
+        // check the nums[i] + nums[j] == target
+        // if yes return their indexes with new int array else return with new int array (-1,-1)
+        for(int i =0; i < nums.length; i++)
+        {
+            for(int j = i+1; j < nums.length; j++)
+            {
+                if(nums[i]+nums[j] == target)
+                {
+                    return new int[] {i,j};
+                }
+            }
+        }
+        return new int[] {-1,-1};
+    }
+}
+//TC- O(n^2)
+//SC - O(1)
+
+
+Approach- 2 : Using HashMap
+
+class Solution {
+    public int[] twoSum(int[] nums, int target) {
+      HashMap<Integer,Integer>hm = new HashMap<Integer,Integer>();//Initialize an empty HashMap.
+	  //Iterate over the elements of the array.
+        for(int i=0;i<nums.length;i++){
+            int req_num = target-nums[i];//will give u the required num
+            if(hm.containsKey(req_num)){
+                int[] arr = {hm.get(req_num),i};// Creating an array with the indices of the two numbers
+                return arr;
+            }
+            hm.put(nums[i],i);  // Add the current number and its index to the HashMap
+        }
+        return null;
+        
+    }
+}
+
+// TC - O(N)
+// SC - O(N)
